@@ -4,7 +4,12 @@ import plotly.express as px
 
 st.set_page_config(page_title="Dashboard Corrida", layout="wide")
 
-df = pd.read_csv("activities.csv")
+df = pd.read_csv(
+    "activities.csv",
+    sep=";",
+    decimal=",",
+    engine="python"
+)
 
 df["Data"] = pd.to_datetime(df["Data"])
 df["Semana"] = df["Data"].dt.isocalendar().week
